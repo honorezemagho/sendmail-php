@@ -8,13 +8,13 @@ require_once './sendgrid-php.php';
 $email = new \SendGrid\Mail\Mail();
 $email->setFrom("perfume@technt.org", "Example User");
 $email->setSubject("Sending with Twilio SendGrid is Fun");
-$email->addTo("zankafred@gmail.com", "Example User");
+$email->addTo("honorezemagho@gmail.com", "Example User");
 $email->addContent("text/plain", "and easy to do anywhere, even with PHP");
 $email->addContent(
     "text/html",
     "<strong>and easy to do anywhere, even with PHP</strong>"
 );
-$sendgrid = new \SendGrid('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');
+$sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
 try {
     $response = $sendgrid->send($email);
     print $response->statusCode() . "\n";
